@@ -1,0 +1,193 @@
+# MINI-PROJECT
+STUDENT_MANAGEMENT_SYSTEM
+/* Welcome to the JS mini project.
+ WHAT are STUDENT MANAGEMENT SYSTEM ?
+ Defination: A student management system (also known as a student information system or SIS) helps a school manage data, communications, and scheduling. A school system generates and uses a large amount of data. This data must be communicated appropriately to students, faculty, and parents. A student management system helps schools to store, manage, and distribute this information.
+
+Some student management systems are designed to serve all of a school’s student data management needs. Other student management systems are specialized. These specialized solutions target specific needs, such as school applications or student behavior tracking.
+
+Student management systems provide many benefits to educational institutions, mostly stemming from centralized data management and accessibility. Teachers can more easily input, manage, and access student data. Parental guardians get better visibility into how their student is performing in classes. State-level compliance and other regulatory requirements are also much easier to fulfill.*/
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<title>Registration form</title> 
+<style type="text/css" media="screen">
+*{margin: 0;
+		padding: 0;
+      }
+      
+h1{
+color:Black;
+text-align: center;
+font-style: italic;
+padding: 30px;
+}
+
+label{
+color:Black;
+font-size: 20px;
+font-style: italic;
+}
+#female, #male, #other
+{color:white;
+font-size: 20px;
+font-style: italic;}
+
+.container {
+  border-radius: 5px;
+  padding: 20px;
+  width: 40%;
+margin: auto;
+background-color: rgb(0,0,0,.4);
+}
+
+#name, #rollno, #dob, #Department, #year{width: 300px;
+outline: 0;
+padding: 4px;
+border: 2px  groove;
+}
+
+table{
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px;
+            background-color: White;
+        }
+        table, th, td{
+            border: 3px solid black;
+        }
+
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+<h1>Registration Form</h1> 
+	     <div class="container">
+
+	 <form>
+	     	<label for="Name">Name:</label>
+         <input type="text" id="name" name="Name" placeholder=" Name" required><br><br>
+<label for="Roll Number">RollNo:</label>
+		 <input type="digit" id="rollno" name="digit" placeholder="digit" required><br><br>
+		 
+<label for="Dept">Department:</label>
+<select id="Department" name="Department">
+<option value="CSE">CSE</option>
+         <option value="ME">ME</option>
+          <option value="EE">EE</option>
+<option value="EC">EC</option>
+<option value="BSC">BSC</option>
+<option value="BA">BA</option>
+         </select><br><br>
+
+<label for="Joining year">Joining year:</label>
+<input type="month" name="year" id = "year" required>
+<br>
+<br>
+         
+		 <label for="Birthday">Birthday:</label>
+         <input type="date" id="dob" name="date" placeholder="DOB" required><br><br>
+<label for="gender">Gender:</label>
+         <label for="male">Male</label>
+           <input type="radio" name="gender" id="male" value="male">
+           <label for="female">Female</strong></label>
+           <input type="radio" name="gender" id="female" value="female">
+<label for="other">Other</strong></label>
+           <input type="radio" name="gender" id="other" value="other"> <br><br>
+
+
+
+ <input type="reset" value="Reset">
+
+            <input type="button" id="submit" onclick="displayDetails()" value="Submit">
+
+
+
+</div>
+<table id="col">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Roll no</th>
+                    <th>Department</th>
+                    <th>Joining year</th>
+                    <th>DOB</th>
+                    <th>Gender</th>
+                    <th>Action</th>
+                </tr> 
+
+            </thead>
+        </table>
+    <script>
+       
+        
+  function displayDetails(){
+            result = validate();
+            if (!result){
+                let Name = document.getElementById("name").value;
+            let Rollno = document.getElementById("rollno").value;
+            let department = document.getElementById("Department").value;
+            let Joiningyear = document.getElementById("year").value;
+            let dob = document.getElementById("dob").value;
+            let gender = $("input:radio[name=gender]:checked").val();
+            
+            let row = 1;
+
+            let col = document.getElementById("col");
+            let newRow = col.insertRow(row);
+            let cell0 = newRow.insertCell(0);
+            let cell1 = newRow.insertCell(1);
+            let cell2 = newRow.insertCell(2);
+            let cell3 = newRow.insertCell(3);
+            let cell4 = newRow.insertCell(4);
+            let cell5 = newRow.insertCell(5);
+            let cell6 = newRow.insertCell(6);
+
+            cell0.innerHTML = Name;
+            cell1.innerHTML = Rollno;
+            cell2.innerHTML = department;
+            cell3.innerHTML = Joiningyear;
+            cell4.innerHTML = dob;
+            cell5.innerHTML = gender;
+            cell6.innerHTML =  '<input type="button" onclick="rowdel(this)" value="Delete">'
+
+            row++;
+
+            };
+}
+            
+            function validate(){
+                let Name = document.getElementById("name").value;
+                if (Name == "" ){
+                    alert("please enter your name")
+                    return true;
+                }
+                
+                let Rollno = document.getElementById("rollno").value;
+                if(Rollno == ""){
+                    alert("please enter your rollno")
+                    return true;
+                }
+
+            }
+
+        function rowdel(btn){
+        
+            let c = confirm("Do you want to delete this row?");
+            if(c === true)
+            {
+                let del = $(btn).parent().parent();
+                del.remove();
+            }
+        }
+        
+        </script>
+</form>
+</body>
+</html>
